@@ -7,4 +7,4 @@ loving minimalist code and cute designs 😻
 [[blog]]
 [[github]]
 
-> home.jpg
+> index.jpg
