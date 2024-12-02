@@ -7,4 +7,4 @@ loving minimalist code and cute designs 😻
 [[blog]]
 [[github]]
 
-> https://cdn.glitch.global/e719c481-298a-4606-9087-5ab6be4667cc/home.jpg?v=1733142628168#.jpg
+> home.jpg
