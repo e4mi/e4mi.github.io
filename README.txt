@@ -1,10 +1,13 @@
-🐾 emi1y4
+# emi1y4
 
-just a coding catgirl 🐾
+just a coding [[catgirl.jpg]] 🐾
 loving minimalist code and cute designs 😻
 
 [[code]]
 [[blog]]
 [[github]]
 
-> index.jpg
+
+---
+
+# code
