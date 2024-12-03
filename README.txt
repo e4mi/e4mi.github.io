@@ -1,9 +1,7 @@
 # emi1y4
 
-just a coding 🐾
+just a coding [[catgirl.jpg]] 🐾
 loving minimalist code and cute designs 😻
-
-[[catgirl.jpg]]
 
 [[codegolf]]
 [[blog]]
