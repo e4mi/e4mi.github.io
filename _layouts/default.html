@@ -3,9 +3,20 @@
   <head>
     <meta name="viewport" content="width=device-width">
     <title>{{page.title}}</title>
+    <style>
+      html {
+        color-scheme: light-dark;
+      }
+      body {
+        max-width: 30rem;
+        margin: 1rem auto;
+        color: light-dark(#000, #fff);
+        background: light-dark(#fff, #000);
+        font: 18px/1.25 sans-serif;
+      }
+    </style>
   </head>
   <body>
-    <h1>{{page.title}}</h1>
     <main>{{content}}</main>
   </body>
 </html>
