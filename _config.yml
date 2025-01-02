@@ -1,3 +1,4 @@
+layouts_dir: "/"
 defaults:
   - values:
-      layout: "./default.html"
+      layout: "default"
