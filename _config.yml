@@ -1,4 +1,4 @@
 layouts_dir: "/"
 defaults:
   - values:
-      layout: "layout"
+      layout: "_layout"
