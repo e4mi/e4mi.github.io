@@ -1,4 +1,3 @@
-layouts_dir: "/"
 defaults:
   - values:
-      layout: "_layout"
+      layout: "./_layout"
