@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@500"
+      rel="stylesheet"
+    />
+    <style>
+      html {
+        color-scheme: light dark;
+        color: light-dark(black, white);
+        background-color: light-dark(white, black);
+      }
+      body {
+        font: 20px/1.5 "Noto Serif", serif;
+        max-width: 40rem;
+        padding: 1rem;
+      }
+      * {
+        font: inherit;
+        margin: 0;
+        background: none;
+        border: none;
+      }
+      [hidden] {
+        display: none !important;
+      }
+      h1, h2, h3 {
+        font-weight: bold;
+        font-size: 2rem;
+      }
+      .button {
+        border: 1px solid;
+        align-self: start;
+        padding: 0 1rem;
+        min-width: 6rem;
+        &:hover {
+          background-color: light-dark(black, white);
+          color: light-dark(white, black);
+        }
+        &:active {
+          opacity: 0.5;
+        }
+      }
+      .content {
+        height: calc(100vh - 2rem);
+      }
+      .editor {
+        outline: none;
+        width: 100%;
+        resize: none;
+        flex: 1;
+      }
+      .editView {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        height: calc(100vh - 2rem);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="content" class="content"></div>
+    <div id="editView" class="editView" hidden>
+      <textarea id="editor" class="editor" spellcheck="false"></textarea>
+      <div class="buttons">
+        <button id="saveButton" class="button">Save</button>
+        <button id="cancelButton" class="button">Cancel</button>
+      </div>
+    </div>
+    <script>
+      let text
+      function markdownToHtml(text) {
+        return (new Option(text)).innerHTML
+          .replace(/\r\n/g, "\n")
+          .replace(/^# (.*)\n/mg, "<h1>$1</h1>")
+          .replace(/\!\[(.*?)\]\((.*?)\)/g, "<img alt='$1' src='$2'>") 
+          .replace(/\[(.*?)\]\((.*?)\)/g, "<a href='$2'>$1</a>")
+          .replace(/\n/g, "<br>\n")
+      }
+      function edit (event) {
+        if (event.target.tagName == "A") {
+          return
+        }
+        editView.hidden = false
+        editor.value = text
+        content.hidden = true
+        editor.focus()
+      }
+      function save () {
+        text = editor.value
+        editView.hidden = true
+        content.hidden = false
+        content.innerHTML = markdownToHtml(text)
+      }
+      function cancel () {
+        editView.hidden = true
+        content.hidden = false
+      }
+      function followLink (event) {
+        const linkStart = editor.value.slice(0, editor.selectionStart).lastIndexOf("[")
+        if (linkStart < 0) {
+          return
+        }
+        const link = editor.value.slice(linkStart).match(/\[(.*?)\]\((.*?)\)/)
+        if (!link) {
+          return
+        }
+        if (link[2].includes("//")) {
+          window.open(link[2])
+        }
+        location.hash = link[2]
+      }
+      async function load () {
+        const id = location.hash.slice(1) || "README"
+        text = await (await fetch(`${id}.md`)).text()
+        console.log(id, text)
+        if (!text) {
+          text.textContent = "not found"
+        }
+        content.innerHTML = markdownToHtml(text)
+      }
+      content.ondblclick = edit
+      editor.ondblclick = followLink
+      saveButton.onclick = save
+      cancelButton.onclick = cancel
+      onhashchange = load
+      load()
+    </script>
+  </body>
+</html>
