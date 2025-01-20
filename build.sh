@@ -1,9 +1,17 @@
+#!/bin/sh -xe
+for file in *.md; do
+  content=`sed -e 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g; s/"/\&quot;/g; s/\!\[\([^)]*\)\](\([^)]*\))/<img src="\2" alt="\1">/g; s/\[\([^)]*\)\](\([^)]*\))/<a href="\2">\1<\/a>/g' "$file"`
+  title=`head -n 1 "$file" | sed -e 's/^# //'`
+  if [ "$file" = "README.md" ]; then
+    file="index.md"
+  fi
+  cat <<EOF > "${file%.md}.html"
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>e4mi</title> 
+    <title>$title</title> 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -34,13 +42,8 @@
     </style>
   </head>
   <body>
-    # e4mi
-
-just a coding catgirl 🐾
-
-loving minimalist code and cute designs 😻
-
-<img src="catgirl.jpg" alt="">
-x &gt; y
+    $content
   </body>
 </html>
+EOF
+done
