@@ -11,7 +11,17 @@
       rel="stylesheet"
     />
     <style>
-      html {
+      * {
+        font: inherit;
+        margin: 0;
+        background: none;
+        border: none;
+      }
+      ::selection {
+        background-color: deeppink;
+        color: white;
+      }
+      :root {
         color-scheme: light dark;
         color: light-dark(black, white);
         background-color: light-dark(white, black);
@@ -21,17 +31,11 @@
         max-width: 40rem;
         padding: 1rem;
       }
-      * {
-        font: inherit;
-        margin: 0;
-        background: none;
-        border: none;
+      body > * {
+        margin-bottom: 1.5rem;
       }
       h1, h2, h3 {
         font-weight: bold;
-      }
-      h1, h2, h3, p {
-        margin-bottom: 1.5rem;
       }
     </style>
   </head>
