@@ -1,4 +1,4 @@
-import { marked } from "https://cdn.skypack.dev/marked"
+import { marked } from "npm:marked"
 
 export default {
   async fetch(request, env) {
@@ -15,8 +15,7 @@ export default {
       title: content.match(/^# (.+)$/m)?.[1],
     }
     const page = layout.replace(/{{(.+?)}}/g, (_, key) => vars[key] || "")
-    const html = marked(content)
-    return new Response(content, {
+    return new Response(page, {
       headers: {
         "content-type": "text/html",
       },
