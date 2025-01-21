@@ -1,3 +1,4 @@
+#!/usr/bin/env -S deno serve --allow-read=. --watch
 import { marked } from "npm:marked"
 
 export default {
