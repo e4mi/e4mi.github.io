@@ -12,10 +12,11 @@ export default {
       })
     }
     const filename = (path[1] || "README") + ".md"
+    Deno.isFileSync("./" + filename)
     const content = await Deno.readTextFile("./" + filename)
     const layout = await Deno.readTextFile("./_layouts/default.html")
     const vars = {
-      content: marked(content),
+      content: marked(content).replace(/\.md">/g, ".html\">"),
       "page.title": content.match(/^# (.+)$/m)?.[1],
     }
     const page = layout.replace(/{{(.+?)}}/g, (_, key) => vars[key] || "")
