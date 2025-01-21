@@ -12,7 +12,7 @@ export default {
       })
     }
     const filename = (path[1] || "README") + ".md"
-    Deno.isFileSync("./" + filename)
+    Deno.statSync("./" + filename)
     const content = await Deno.readTextFile("./" + filename)
     const layout = await Deno.readTextFile("./_layouts/default.html")
     const vars = {
