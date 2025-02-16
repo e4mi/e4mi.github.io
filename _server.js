@@ -22,10 +22,14 @@ export default {
       return new Response(null, { status: 404 })
     }
     const layout = await Deno.readTextFile("./_layouts/default.html")
-    content = content.replace(/^---\n([\s\S]*\n)?title: (.+)[\s\S]*\n---\n/, "# $2\n")
+    let title = ""
+    content = content.replace(/^---\n([\s\S]*\n)?title: (.+)[\s\S]*\n---\n/, (a, b, t) => {
+      title = t
+      return ""
+    })
     const vars = {
       content: marked(content).replace(/\.md">/g, '.html">'),
-      "page.title": content.match(/^# (.+)$/m)?.[1],
+      "page.title": title,
     }
     const page = layout.replace(/{{(.+?)}}/g, (_, key) => vars[key] || "")
     return new Response(page, {
