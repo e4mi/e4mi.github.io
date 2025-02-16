@@ -1,7 +1,5 @@
 # e4mi
-
-just a coding catgirl 🐾
-
+just a coding catgirl 🐾  
 loving minimalist code and cute designs 😻
 
-![catgirl](catgirl.jpg)
+- [awesome suckless software](suckless.html)
