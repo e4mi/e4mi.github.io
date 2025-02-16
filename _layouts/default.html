@@ -27,10 +27,19 @@
       text-decoration: none;
     }
     a:hover {
-      text-decoration: underline;
+      filter: brightness(1.2);
+    }
+    a:active {
+      filter: brightness(0.8);
     }
     a:visited {
       color: #cba6f7;
+    }
+    a::before {
+      content: "[";
+    }
+    a::after {
+      content: "]";
     }
     body {
       background: #1e1e2e;
@@ -39,19 +48,19 @@
       padding: max(7vw, 1rem);
       margin: 0 auto;
     }
-    h1::before, h1::after, h2::before, h3::before, li::before{
+    a::before, a::after, h1::before, h1::after, h2::before, h3::before, li::before {
       color: #a6adc8;
       font-weight: normal;
       white-space: pre-line;
     }
-    h1:before {
+    h1::before {
       content: "---\atitle: ";
     }
-    h1:after {
+    h1::after {
       content: "\a---";
     }
     h1, h2, h3 {
-      color: #eef1fb;
+      filter: brightness(1.2);
       margin-bottom: 1.4em;
     }
     h2::before {
@@ -68,7 +77,7 @@
       margin-left: 1.25em;
       text-indent: -1.25em;
     }
-    li:before {
+    li::before {
       content: "- ";
     }
     p, ul:not(li ul) {
