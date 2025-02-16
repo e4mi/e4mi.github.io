@@ -1,25 +1,84 @@
 <!doctype html>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="icon" href="data:" />
-<title>{{page.title}}</title>
-<style>
-@font-face{font-family:'Noto Sans Mono';src:local("Noto Sans Mono"),url(https://fonts.gstatic.com/s/notosansmono/v30/BngcUXNETWXI6LwhGYvaxZikqZqK6fBq6kPvUce2oAZ2evCj_9SrdQ.woff2)format('woff2')}
-*{font:14px/1.4 "Noto Sans Mono",monospace;padding:0;margin:0;list-style:none;color:inherit;text-decoration:none}
-p,ul:not(li ul),h1,h2,h3{margin-bottom:1.4em}
-body{max-width:40em;padding:1em;}
-img{max-width:100%}
-h1,h2,h3,a:active{font-weight:bold}
-a:before{content:"[";opacity:.6}
-a:after{content:"]("attr(href)")";opacity:.6}
-a:hover:before,a:hover:after{opacity:1}
-h2:before{content:"## "}
-h3:before{content:"### "}
-h1{white-space:pre-line}
-h1:before{content:"---\atitle: ";font-weight:normal;opacity:.6}
-h1:after{content:"\a---";font-weight:normal;opacity:.6}
-li:before{content:"- "}
-li{margin-left:1.25em;text-indent:-1.25em}
-</style>
-<body>{{content}}</body>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐾</text></svg>">
+  <title>{{page.title}}</title>
+  <style>
+    @font-face {
+      font-family: 'Noto Sans Mono';
+      src: local("Noto Sans Mono"), url(https://fonts.gstatic.com/s/notosansmono/v30/BngcUXNETWXI6LwhGYvaxZikqZqK6fBq6kPvUce2oAZ2evCj_9SrdQ.woff2) format('woff2');
+    }
+    * {
+      color: inherit;
+      font-family: "Noto Sans Mono", monospace;
+      font-size: clamp(14px, 3vmin, 22px);
+      line-height: 1.5rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    ::selection {
+      background-color: #9399b24d;
+    }
+    a {
+      color: #b4befe;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #cba6f7;
+    }
+    body {
+      background: #1e1e2e;
+      color: #cdd6f4;
+      max-width: 40em;
+      padding: max(7vw, 1rem);
+      margin: 0 auto;
+    }
+    h1::before, h1::after, h2::before, h3::before, li::before{
+      color: #a6adc8;
+      font-weight: normal;
+      white-space: pre-line;
+    }
+    h1:before {
+      content: "---\atitle: ";
+    }
+    h1:after {
+      content: "\a---";
+    }
+    h1, h2, h3 {
+      color: #eef1fb;
+      margin-bottom: 1.4em;
+    }
+    h2::before {
+      content: "## ";
+    }
+    h3::before {
+      content: "### ";
+    }
+    img {
+      border-radius: 4px;
+      max-width: 100%;
+    }
+    li {
+      margin-left: 1.25em;
+      text-indent: -1.25em;
+    }
+    li:before {
+      content: "- ";
+    }
+    p, ul:not(li ul) {
+      margin-bottom: 1.4em;
+    }
+  </style>
+</head>
+<body>
+  {{content}}
+</body>
 </html>
+<!-- theme based on https://github.com/catppuccin -->
+<!-- built with https://github.com/jekyll/jekyll -->
