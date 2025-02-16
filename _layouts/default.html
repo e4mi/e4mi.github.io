@@ -46,7 +46,7 @@
       content: "]";
     }
     body {
-      max-width: 40em;
+      max-width: 32em;
       padding: max(7vw, 1rem);
       margin: 0 auto;
     }
@@ -54,6 +54,24 @@
       color: #a6adc8;
       font-weight: normal;
       white-space: pre-line;
+    }
+    footer a {
+      align-items: center;
+      color: #a6adc8;
+      display: flex;
+      gap: 1rem;
+      margin: 2.8rem 0;
+    }
+    footer a::before, footer a::after {
+      content: none;
+    }
+    footer img {
+      border-radius: 50%;
+      height: 2.8rem;
+      width: 2.8rem;
+    }
+    footer p {
+      margin: 0;
     }
     h1::before {
       content: "---\atitle: ";
@@ -89,6 +107,12 @@
 </head>
 <body>
   {{content}}
+  <footer>
+    <a href="/">
+      <img class="avatar" src="https://github.com/e4mi.png" alt="e4mi" width="32" height="32">
+      <p>e4mi<br>{{ site.time | date: "%Y-%m-%d" }}2025-01-02</p>
+    </a>
+  </footer>
 </body>
 </html>
 <!-- theme based on https://github.com/catppuccin -->
