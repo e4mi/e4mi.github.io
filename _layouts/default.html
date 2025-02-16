@@ -18,6 +18,7 @@
       list-style: none;
       margin: 0;
       padding: 0;
+      font-weight: normal;
     }
     ::selection {
       background-color: #9399b24d;
@@ -50,14 +51,13 @@
       padding: max(7vw, 1rem);
       margin: 0 auto;
     }
-    a::before, a::after, h1::before, h1::after, h2::before, h3::before, li::before {
+    a::before, a::after, h1::before, h1::after, h2::before, h3::before, li::before, footer a {
       color: #a6adc8;
       font-weight: normal;
       white-space: pre-line;
     }
     footer a {
       align-items: center;
-      color: #a6adc8;
       display: flex;
       gap: 1rem;
       margin: 2.8rem 0;
@@ -67,21 +67,22 @@
     }
     footer img {
       border-radius: 50%;
-      height: 2.8rem;
-      width: 2.8rem;
+      height: 2.4rem;
+      width: 2.4rem;
     }
     footer p {
+      font-size: 0.8rem;
       margin: 0;
-    }
-    h1::before {
-      content: "---\atitle: ";
-    }
-    h1::after {
-      content: "\a---";
     }
     h1, h2, h3 {
       filter: brightness(1.2);
       margin-bottom: 1.4em;
+    }
+    h1 {
+      font-size: 1.4rem;
+    }
+    h1::before {
+      content: "# ";
     }
     h2::before {
       content: "## ";
