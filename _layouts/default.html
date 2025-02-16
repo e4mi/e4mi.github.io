@@ -111,7 +111,7 @@
   <footer>
     <a href="/">
       <img class="avatar" src="https://github.com/e4mi.png" alt="e4mi" width="32" height="32">
-      <p>e4mi<br>{{ site.time | date: "%Y-%m-%d" }}</p>
+      <p>e4mi<br>{{ (page.date or site.time) | date: "%Y-%m-%d" }}</p>
     </a>
   </footer>
 </body>

@@ -1,5 +1,6 @@
 ---
 title: e4mi
+date: 2025-02-16
 permalink: /
 ---
 
