@@ -5,13 +5,16 @@ import { serveDir } from "jsr:@std/http"
 export default {
   async fetch(request) {
     const url = new URL(request.url)
-    let path = url.pathname.match(/^\/([^/]+\.html)?$/)
+    let path = url.pathname.match(/^\/([^/]+)\.html?$/)
+    if (url.pathname === "/") {
+      path = [0, "README"]
+    }
     if (!path) {
       return serveDir(request, {
         fsRoot: ".",
       })
     }
-    const filename = (path[1] || "README") + ".md"
+    const filename = (path[1]) + ".md"
     let content
     try {
       content = await Deno.readTextFile("./" + filename)
@@ -19,6 +22,7 @@ export default {
       return new Response(null, { status: 404 })
     }
     const layout = await Deno.readTextFile("./_layouts/default.html")
+    content = content.replace(/^---\n([\s\S]*\n)?title: (.+)[\s\S]*\n---\n/, "# $2\n")
     const vars = {
       content: marked(content).replace(/\.md">/g, '.html">'),
       "page.title": content.match(/^# (.+)$/m)?.[1],

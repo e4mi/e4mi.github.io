@@ -3,6 +3,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="icon" href="data:" />
 <title>{{page.title}}</title>
-<style>*{font:14px/1.4 monospace;margin:0 0 1.4em}body{max-width:40em;padding:1em}img{max-width:100%}h1,h2,h3{font-weight:bold}a{color:inherit}</style>
+<style>
+@font-face{font-family:'Noto Sans Mono';src:local("Noto Sans Mono"),url(https://fonts.gstatic.com/s/notosansmono/v30/BngcUXNETWXI6LwhGYvaxZikqZqK6fBq6kPvUce2oAZ2evCj_9SrdQ.woff2)format('woff2')}
+*{font:14px/1.4 "Noto Sans Mono",monospace;padding:0;margin:0;list-style:none;color:inherit;text-decoration:none}
+p,ul:not(li ul),h1,h2,h3{margin-bottom:1.4em}
+body{max-width:40em;padding:1em;}
+img{max-width:100%}
+h1,h2,h3,a:active{font-weight:bold}
+a:before{content:"[";opacity:.6}
+a:after{content:"]("attr(href)")";opacity:.6}
+a:hover:before,a:hover:after{opacity:1}
+h2:before{content:"## "}
+h3:before{content:"### "}
+h1{white-space:pre-line}
+h1:before{content:"---\atitle: ";font-weight:normal;opacity:.6}
+h1:after{content:"\a---";font-weight:normal;opacity:.6}
+li:before{content:"- "}
+li{margin-left:1.25em;text-indent:-1.25em}
+</style>
 <body>{{content}}</body>
 </html>
